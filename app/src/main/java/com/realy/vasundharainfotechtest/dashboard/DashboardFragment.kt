@@ -68,7 +68,13 @@ class DashboardFragment : Fragment(), IOnAppClickListener {
                         is AppState.Sucess -> {
                             Log.i(TAG,"Success")
                             apps.clear()
-                            apps.addAll(dataStae.response.appCenter?.flatMap { it?.subCategory?: emptyList() }?.filterNotNull()?: emptyList())
+//                            apps.addAll(dataStae.response.appCenter?.flatMap { it?.subCategory?: emptyList() }?.filterNotNull()?: emptyList())
+
+                            apps.addAll(
+                                dataStae.response.appCenter?.find { it?.name.equals("POPULAR GAMES") }?.subCategory?.filterNotNull() ?: emptyList()
+                            )
+
+
                             appsRecyclerViewAdapter?.notifyDataSetChanged()
                         }
                     }
