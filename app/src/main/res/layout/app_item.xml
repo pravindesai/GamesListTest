@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="app"
+            type="com.realy.vasundharainfotechtest.data.model.SubCategoryItem" />
+        <import type="com.realy.vasundharainfotechtest.dashboard.recyclerview.AppBindingAdapters"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/container"
+            app:cardCornerRadius="20dp"
+            android:elevation="20dp"
+            android:shadowColor="@color/green"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/innerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img"
+                    imgUrl="@{app.icon}"
+                    app:layout_constraintStart_toStartOf="@id/innerContainer"
+                    app:layout_constraintTop_toTopOf="@id/innerContainer"
+                    app:layout_constraintBottom_toBottomOf="@id/innerContainer"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"/>
+
+                <TextView
+                    android:id="@+id/name"
+                    android:text="@{app.name}"
+                    android:textSize="16sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/img"
+                    app:layout_constraintTop_toTopOf="@id/img"
+                    app:layout_constraintEnd_toStartOf="@id/downloaddBtn"
+                    app:layout_constraintHorizontal_bias="0"
+                    android:layout_margin="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:progressTint="@color/gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="@{AppBindingAdapters.INSTANCE.toFloatVal(app.star)}"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:stepSize="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/downloaddBtn"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@id/img"
+                    app:layout_constraintTop_toBottomOf="@id/name" />
+
+                <TextView
+                    android:id="@+id/downloads"
+                    android:text="@{app.installedRange}"
+                    android:textSize="14sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/img"
+                    app:layout_constraintTop_toBottomOf="@id/rating"
+                    app:layout_constraintEnd_toStartOf="@id/downloaddBtn"
+                    app:layout_constraintHorizontal_bias="0"
+                    android:layout_margin="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/downloaddBtn"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@id/innerContainer"
+                    app:layout_constraintTop_toTopOf="@id/innerContainer"
+                    app:layout_constraintBottom_toBottomOf="@id/innerContainer"
+                    android:text="Download"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/round_button"
+                    android:backgroundTint="@color/green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
